@@ -184,5 +184,58 @@ raidOutcome(10);
 console.log(`Tada atsirado kitas piratas, kurio vardo neminesime, kuris apiplese ${pirate.name}! 
     ${pirate.name} lobis liko: ${pirate.looseAll()}. `)
 
-console.log(`Bet ${pirate.name} nenuleido ranku, pagrobe nauja laiva, ir toliau tese plesikavimus:`)
+console.log(`Bet ${pirate.name} nenuleido ranku, pagrobe kita laiva, ir toliau tese plesikavimus:`)
 raidOutcome(5);
+
+
+// 6.
+// Funkcijos: Parašyk funkciją, kuri priima slaptažodį (string) 
+// ir grąžina objektą su: ilgis (length), ar yra skaičių (true/false), ar yra didžiųjų raidžių (true/false) 
+// ir stiprumo įvertinimą („Silpnas“, „Vidutinis“, „Stiprus“ pagal kriterijus: ilgis > 8, skaičiai, didžiosios raidės). 
+// console.log(checkPassword("abc")); 
+// Išvestis: { length: 3, hasNumbers: false, hasUppercase: false, strength: "Silpnas" } 
+// console.log(checkPassword("Pass123")); 
+// Išvestis: { length: 7, hasNumbers: true, hasUppercase: true, strength: "Vidutinis" } 
+// console.log(checkPassword("SuperSecure123")); 
+// Išvestis: { length: 14, hasNumbers: true, hasUppercase: true, strength: "Stiprus" }
+
+console.log('-- task 6  ---');
+
+function checkPassword(password){
+    let passwLength = password.length;
+    let hasNumbers =  /\d/.test(password);
+    let hasUppercase = /[A-Z]/.test(password);
+    let hasLowercase = /[a-z]/.test(password);
+    let strength;
+    
+    if(passwLength > 8 && hasNumbers && hasUppercase && hasLowercase){
+        strength = 'Stiprus';
+        // console.log(strength);
+    } else if (passwLength > 4 && passwLength < 8 && hasNumbers && hasUppercase && hasLowercase){
+        strength = 'Vidutinis';
+        // console.log(strength);
+    } else {
+        strength = 'Silpnas';
+        // console.log(strength);
+    
+    }
+    
+    return result = {
+        length : passwLength,
+        hasNumbers : hasNumbers,
+        hasUppercase : hasUppercase,
+        hasLowercase : hasLowercase,
+        strength: strength
+    }
+}
+
+console.log(checkPassword('123'));
+console.log(checkPassword('123aaaaaaaaaaaaaaaaaaaaaaa'));
+console.log(checkPassword('123BBBBBBaaaaaaaaaa'));
+console.log(checkPassword('aaaaaaaaaaaaaaaaaaaa'));
+
+
+
+
+
+
