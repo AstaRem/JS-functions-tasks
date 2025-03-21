@@ -84,9 +84,7 @@ console.log(weatherAdvice(15, false, 17));
 // ... 
 // Po X val.: nuvažiuota Y km, liko Z l kuro – kelionė baigta! 
  
-
 console.log('-- task 3 ---');
-
 
 let distAndFuel = (fullTank, fuelConsumption, speed, minFuel) => {
     let haveFuel = fullTank;
@@ -117,9 +115,74 @@ console.log(`------`)
 distAndFuel(60, 0.1, 70, 10);
 
 
+//4. 
+// Masyvai ir atsitiktinumas: Sukurk masyvą su 5 istoriniais ginklais (pvz., „kardas“, „kalavijas“ ir t.t.). 
+// Parašyk funkciją, kuri atsitiktinai parenka vieną ginklą (naudodamas Math.random()) 
+// ir išveda pranešimą, pvz., „Tau paskirtas [ginklas] kovai!“
+
+console.log('-- task 4  ---');
+
+// man nepatinka ginklu tema, tai naudoju kepures :-)
+const headgear = ['Kepure', 'Skrybele', 'Berete', 'Skarele', 'Balaclava', 'Salmas', 'Jureivio kepure', 'Kepure su snapeliu', 'Ziemine kepure']
+
+function getRandomInt(max){
+    return Math.floor(Math.random() * max)
+}
+
+let chooseHat = (arr) => {
+    let randIndex = getRandomInt(arr.length);
+    return `
+    Galvos apdangalas siandienai: ${arr[randIndex]}.
+    `
+}
+
+console.log(chooseHat(headgear));
+
+//5.
+// Objektai ir metodai: Sukurk objektą, aprašantį piratą (vardas, laivas, lobio kiekis aukso monetomis). 
+// Pridėk metodą raid, kuris padidina lobio kiekį atsitiktiniu skaičiumi (pvz., nuo 10 iki 50 monetų) 
+// ir grąžina pranešimą, pvz., „[Vardas] apiplėšė ir gavo [kiekis] monetų!“
 
 
+console.log('-- task 5  ---');
+
+function randomNum(min, max) {
+    const minCeiled = Math.ceil(min);
+    const maxFloored = Math.floor(max);
+    return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
+  }
+  
+
+const pirate = {
+    name: 'Henry Every',
+    ship: 'Fancy',
+    treasure: 1000,
+    raid(){
+        return this.treasure += randomNum(10,50);
+    }, 
+    looseAll(){
+        return this.treasure = 0;
+    }
+}
 
 
+let raidOutcome = (qty) => {
+    // let results = [];
+    for(let i = 1; i < qty; i++){
+        let result = `Aukso monetu kiekis po ${i} apiplesimo: ${pirate.raid()}`
+        console.log(result);
+        // results.push(result); can use later, if needed
+    }
+    // return results;  can use later, if needed
+}
 
+console.log(`Piratas ${pirate.name}, su savo igula plaukiojo laivu ${pirate.ship} Indijos vandenyne 
+        ir apiplesinejo prekybos laivus. Pradzioje lobio kiekis aukso monetomis: ${pirate.treasure} `)
 
+raidOutcome(10);
+
+console.log(`Tada atsirado kitas piratas, kurio vardo neminesime, kuris apiplese ${pirate.name}! 
+    ${pirate.name} lobis liko: ${pirate.looseAll()}. `)
+
+console.log(`Bet ${pirate.name} nenuleido ranku, pagrobe nauja laiva, ir toliau tese plesikavimus:`)
+raidOutcome(5);
