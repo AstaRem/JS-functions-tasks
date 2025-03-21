@@ -199,6 +199,8 @@ raidOutcome(5);
 // console.log(checkPassword("SuperSecure123")); 
 // Išvestis: { length: 14, hasNumbers: true, hasUppercase: true, strength: "Stiprus" }
 
+//Dar pridedu viena salyga, kad tuti tureti ir mazasias raides
+
 console.log('-- task 6  ---');
 
 function checkPassword(password){
@@ -233,9 +235,48 @@ console.log(checkPassword('123'));
 console.log(checkPassword('123aaaaaaaaaaaaaaaaaaaaaaa'));
 console.log(checkPassword('123BBBBBBaaaaaaaaaa'));
 console.log(checkPassword('aaaaaaaaaaaaaaaaaaaa'));
+console.log(checkPassword('aa12Paa'));
 
 
 
+// 7.
+// Aukštesnio lygio funkcijos: Sukurk funkciją, kuri priima masyvą su darbų objektais (kiekvienas turi task – darbo pavadinimą ir done – būseną kaip true/false) ir kitą funkciją, apibrėžiančią, kaip keisti būseną (pvz., pažymėti kaip atliktą). Grąžink naują masyvą su atnaujintais darbais. Duomenų pvz: const myTasks = [
+//     { task: "Išplauti indus", done: false }, { task: "Pavalgyt", done: fslde }, ]; Išvestis: [{ task: "Išplauti indus", done: true }, { task: "Pavalgyt", done: true }]
 
 
+console.log('-- task 7  ---');
+
+const tasks = [
+    {task: 'Isplauti indus', done: false},
+    {task: 'Pavalgyti', done: false},
+    {task: 'Sutvarkyti namus', done: false}
+]
+console.log(tasks)
+
+const doTask = (arr) => {
+    return arr.map((item) => {
+        return { ...item, done : true }
+    } );
+}
+console.log('visos uzduotys atliktos, galim eiti zaisti:')
+console.log(doTask(tasks));
+
+
+// 8.
+// Aukštesnio lygio funkcijos: Sukurk funkciją, kuri priima masyvą su maisto kalorijomis (skaičiais) ir kitą funkciją, apibrėžiančią, kaip keisti kalorijas (pvz., pridėti 10%). Grąžink naują masyvą su atnaujintomis kalorijomis. Duomenų pvz: const dailyFoods = [200, 150, 300]; Išvestis: [220, 165, 330]
+
+console.log('-- task 8  ---');
+
+const dailyFoods = [200, 150, 300];
+const add10Percent = (cal) => {
+    return Math.floor(cal * 1.10)
+}
+
+// console.log(add10Percent(500))
+
+const increaseCal = (arr, action) => {
+    return arr.map((item) => action(item));
+}
+
+console.log(increaseCal(dailyFoods, add10Percent));
 
