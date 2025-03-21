@@ -309,3 +309,34 @@ const calculateTotal = (arr, discount = 0) => {
 
 console.log(calculateTotal(prices, 20));
 
+
+//  10.
+// Uždarymai (Closures) – moko funkcijų, kurios „prisimena“ ankstesnius duomenis.
+// Užduotis: Sukurk funkciją, kuri priima pradinį treniruočių dienų masyvą (pvz., ["Pirmadienis"]) ir grąžina kitą funkciją. 
+// Ta nauja funkcija leidžia pridėti vieną treniruočių dieną ir išveda visas esamas dienas kaip eilutę. 
+
+// const myPlan = planWorkouts(["Antradienis"]); console.log(myPlan("Ketvirtadienis")); išvestis => Treniruotės: Antradienis, Ketvirtadienis 
+// console.log(myPlan("Šeštadienis")); išvestis => Treniruotės: Antradienis, Ketvirtadienis, Šeštadienis
+
+console.log('-- task 10 ---');
+
+const initialDays = ['Pirmadienis'];
+
+function workoutDays(arr){
+    return function addDay(newDay){
+        arr.push(newDay);
+        return `Treniruociu dienos: ${arr.join(', ')}`
+    }
+}
+
+let trainingPlan = workoutDays(initialDays);
+console.log(trainingPlan('Antradienis'));
+console.log(trainingPlan('Ketvirtadienis'));
+console.log(trainingPlan('Penktadienis'));
+
+
+
+
+
+
+
