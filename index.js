@@ -43,9 +43,9 @@ console.log('-- task 2 ---');
 
 let weatherAdvice = (temperature, rain, windSpeed) => {
     let advice;
-    if(temperature > 20 && !rain){
+    if (temperature > 20 && !rain) {
         advice = `Puikus oras pasivaikščiojimui!`
-    } else if(rain || windSpeed > 30){
+    } else if (rain || windSpeed > 30) {
         advice = `Geriau likti namuose.`
     } else {
         advice = `Apsirenk pagal orą ir viskas bus gerai!`
@@ -77,13 +77,13 @@ console.log(weatherAdvice(15, false, 17));
 // ✓ Kiek kuro liko bake. 
 // • Ciklas sustoja, kai kuro lieka mažiau nei 7 litrai (neužtenka kitam 100 
 // km). 
- 
+
 // Pavyzdinis išvesties formatas: 
 // Po 1 val.: nuvažiuota 90 km, liko 43.7 l kuro 
 // Po 2 val.: nuvažiuota 180 km, liko 37.4 l kuro 
 // ... 
 // Po X val.: nuvažiuota Y km, liko Z l kuro – kelionė baigta! 
- 
+
 console.log('-- task 3 ---');
 
 let distAndFuel = (fullTank, fuelConsumption, speed, minFuel) => {
@@ -96,14 +96,14 @@ let distAndFuel = (fullTank, fuelConsumption, speed, minFuel) => {
 
     console.log(`Automobilio bako dydis: ${fullTank} l, kuro sanaudos ${fuelConsumption},  vaziavimo greitis ${speed}, kai lieka minimalus kuro kiekis, kuris yra ${minFuel} l, toliau vaziuoti nebegalima. `)
 
-    while (haveFuel > minFuel){
+    while (haveFuel > minFuel) {
         haveFuel -= fuelUsed;
         totalKm += kmPerHour;
         hour++;
-        if (haveFuel > minFuel){
+        if (haveFuel > minFuel) {
             result = `Po ${hour} valandos nuvaziavo ${totalKm}km, liko ${haveFuel.toFixed(1)} l kuro`;
             console.log(result);
-        }  else if(haveFuel <= minFuel) {
+        } else if (haveFuel <= minFuel) {
             result = `Po ${hour} valandos nuvaziavo ${totalKm}km, liko tik ${haveFuel.toFixed(1)} l kuro, todel kelione baigta!`;
             console.log(result);
         }
@@ -125,7 +125,7 @@ console.log('-- task 4  ---');
 // man nepatinka ginklu tema, tai naudoju kepures :-)
 const headgear = ['Kepure', 'Skrybele', 'Berete', 'Skarele', 'Balaclava', 'Salmas', 'Jureivio kepure', 'Kepure su snapeliu', 'Ziemine kepure']
 
-function getRandomInt(max){
+function getRandomInt(max) {
     return Math.floor(Math.random() * max)
 }
 
@@ -150,17 +150,17 @@ function randomNum(min, max) {
     const minCeiled = Math.ceil(min);
     const maxFloored = Math.floor(max);
     return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled); // The maximum is inclusive and the minimum is inclusive
-  }
-  
+}
+
 
 const pirate = {
     name: 'Henry Every',
     ship: 'Fancy',
     treasure: 1000,
-    raid(){
-        return this.treasure += randomNum(10,50);
-    }, 
-    looseAll(){
+    raid() {
+        return this.treasure += randomNum(10, 50);
+    },
+    looseAll() {
         return this.treasure = 0;
     }
 }
@@ -168,7 +168,7 @@ const pirate = {
 
 let raidOutcome = (qty) => {
     // let results = [];
-    for(let i = 1; i < qty; i++){
+    for (let i = 1; i < qty; i++) {
         let result = `Aukso monetu kiekis po ${i} apiplesimo: ${pirate.raid()}`
         console.log(result);
         // results.push(result); can use later, if needed
@@ -203,30 +203,30 @@ raidOutcome(5);
 
 console.log('-- task 6  ---');
 
-function checkPassword(password){
+function checkPassword(password) {
     let passwLength = password.length;
-    let hasNumbers =  /\d/.test(password);
+    let hasNumbers = /\d/.test(password);
     let hasUppercase = /[A-Z]/.test(password);
     let hasLowercase = /[a-z]/.test(password);
     let strength;
-    
-    if(passwLength > 8 && hasNumbers && hasUppercase && hasLowercase){
+
+    if (passwLength > 8 && hasNumbers && hasUppercase && hasLowercase) {
         strength = 'Stiprus';
         // console.log(strength);
-    } else if (passwLength > 4 && passwLength < 8 && hasNumbers && hasUppercase && hasLowercase){
+    } else if (passwLength > 4 && passwLength < 8 && hasNumbers && hasUppercase && hasLowercase) {
         strength = 'Vidutinis';
         // console.log(strength);
     } else {
         strength = 'Silpnas';
         // console.log(strength);
-    
+
     }
-    
+
     return result = {
-        length : passwLength,
-        hasNumbers : hasNumbers,
-        hasUppercase : hasUppercase,
-        hasLowercase : hasLowercase,
+        length: passwLength,
+        hasNumbers: hasNumbers,
+        hasUppercase: hasUppercase,
+        hasLowercase: hasLowercase,
         strength: strength
     }
 }
@@ -247,16 +247,16 @@ console.log(checkPassword('aa12Paa'));
 console.log('-- task 7  ---');
 
 const tasks = [
-    {task: 'Isplauti indus', done: false},
-    {task: 'Pavalgyti', done: false},
-    {task: 'Sutvarkyti namus', done: false}
+    { task: 'Isplauti indus', done: false },
+    { task: 'Pavalgyti', done: false },
+    { task: 'Sutvarkyti namus', done: false }
 ]
 console.log(tasks)
 
 const doTask = (arr) => {
     return arr.map((item) => {
-        return { ...item, done : true }
-    } );
+        return { ...item, done: true }
+    });
 }
 console.log('visos uzduotys atliktos, galim eiti zaisti:')
 console.log(doTask(tasks));
@@ -279,4 +279,33 @@ const increaseCal = (arr, action) => {
 }
 
 console.log(increaseCal(dailyFoods, add10Percent));
+
+
+
+// 8.
+// Numatyti parametrai + Masyvų metodai (reduce): Parašyk funkciją, kuri priima masyvą su pirkinių kainomis ir nuolaidą (su numatyta reikšme 0%), o grąžina bendrą sumą po nuolaidos. Duomenų pvz: calculateTotal([10, 20, 30]) => Išvestis: "60.00 eurų"; calculateTotal([10, 20, 30], 20) => Išvestis: "48.00 eurų"
+
+console.log('-- task 9  ---');
+
+const prices = [10, 20, 30];
+// const dis = 20/100;
+// console.log(dis)
+
+const calculateTotal = (arr, discount = 0) => {
+
+    let afterDiscount;
+
+    if (discount > 0) {
+        afterDiscount = arr.map((price) => {
+            newPrice = price - price * (discount / 100)
+            return newPrice;
+        });
+    } else {
+        afterDiscount = arr;
+    }
+    
+    return afterDiscount;
+}
+
+console.log(calculateTotal(prices, 20));
 
